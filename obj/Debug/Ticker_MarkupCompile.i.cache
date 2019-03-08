@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\code\Ticker\obj\Debug\
+D:\POC\WPFTicker\obj\Debug\
 Ticker
 none
 false
 DEBUG;TRACE
-C:\code\Ticker\App.xaml
+D:\POC\WPFTicker\App.xaml
 11151548125
 
-9-2049519603
-14-2034923872
+936226607
+142021963192
 MainWindow.xaml;
 
-True
+False
 

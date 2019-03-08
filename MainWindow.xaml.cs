@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-
+using System.Windows.Threading;
 
 namespace Ticker
 {
@@ -16,18 +16,26 @@ namespace Ticker
     {
         dynamic koinexPrice;
         dynamic binancePrice;
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        DispatcherTimer dispatcherTimerRefresh = new DispatcherTimer();
+      
         public MainWindow()
         {
             InitializeComponent();
 
             GetKoinexPrice();
             GetBinancePrice();
-            
+           
+
+
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
             dispatcherTimer.Start();
+
+           
         }
+
+        
 
         private void DispatcherTimer_Tick(object sender, System.EventArgs e)
         {
@@ -110,11 +118,25 @@ namespace Ticker
         {
             int sec = 10;
             if (txtTimer.Text != null && int.TryParse(txtTimer.Text, out sec))
-            {
+            {              
                 dispatcherTimer.Stop();
                 dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
                 dispatcherTimer.Start();
             }
+        }
+
+        private void btnZoomIn_Click(object sender, RoutedEventArgs e)
+        {
+            lblKoinex.FontSize = lblKoinex.FontSize + 4;
+            lblBinance.FontSize = lblKoinex.FontSize + 4;
+            lblSep.FontSize = lblKoinex.FontSize + 4;
+        }
+
+        private void btnZoomOut_Click(object sender, RoutedEventArgs e)
+        {
+            lblKoinex.FontSize = lblKoinex.FontSize - 4;
+            lblBinance.FontSize = lblKoinex.FontSize - 4;
+            lblSep.FontSize = lblKoinex.FontSize - 4;
         }
     }
 }
