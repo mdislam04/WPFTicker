@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker", "Ticker.csproj", "{190DCCF2-D673-406F-9AD4-B6F9D10FB26E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{190DCCF2-D673-406F-9AD4-B6F9D10FB26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190DCCF2-D673-406F-9AD4-B6F9D10FB26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190DCCF2-D673-406F-9AD4-B6F9D10FB26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190DCCF2-D673-406F-9AD4-B6F9D10FB26E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7953E867-2F64-4A8E-A82E-FE0C3D2FDD62}
+	EndGlobalSection
+EndGlobal
