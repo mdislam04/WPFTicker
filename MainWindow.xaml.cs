@@ -23,9 +23,9 @@ namespace Ticker
         {
             InitializeComponent();
 
-            GetKoinexPrice();
-            GetBinancePrice();
-           
+            getPrices();
+
+
 
 
             dispatcherTimer.Tick += DispatcherTimer_Tick;
@@ -35,12 +35,24 @@ namespace Ticker
            
         }
 
+        private void getPrices()
+        {
+            try
+            {
+                GetKoinexPrice();
+                GetBinancePrice();
+            }
+            catch(Exception ex)
+            {
+                lblBinance.Content = ex.Message;
+            }
+        }
+
         
 
         private void DispatcherTimer_Tick(object sender, System.EventArgs e)
         {
-            GetKoinexPrice();
-            GetBinancePrice();
+            getPrices();
         }
 
         private async void GetKoinexPrice()

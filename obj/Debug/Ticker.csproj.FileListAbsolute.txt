@@ -36,3 +36,7 @@ D:\POC\WPFTicker\bin\Debug\Newtonsoft.Json.dll
 D:\POC\WPFTicker\bin\Debug\Newtonsoft.Json.pdb
 D:\POC\WPFTicker\bin\Debug\Newtonsoft.Json.xml
 D:\POC\WPFTicker\obj\Debug\Ticker.csproj.CopyComplete
+D:\POC\WPFTicker\bin\Debug\Ticker.exe.manifest
+D:\POC\WPFTicker\bin\Debug\Ticker.application
+D:\POC\WPFTicker\obj\Debug\Ticker.exe.manifest
+D:\POC\WPFTicker\obj\Debug\Ticker.application
