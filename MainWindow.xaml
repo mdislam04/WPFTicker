@@ -11,19 +11,19 @@
         <Rectangle Height="100" Width="300" RadiusX="9" RadiusY="9" Fill="#FF131414"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Margin="170,0,0,70" Height="20" HorizontalAlignment="Right">
-            <Button Width="30" Content="Min" Click="Button_Click_1"  Background="#FF0C75B4" FontWeight="UltraBold"
-            Foreground="#FFE8DADA" Margin="0,0,0,0" />
+            <Button Width="30" Content="Min" Click="Button_Click_1"  FontWeight="UltraBold"
+           Margin="0,0,0,0" Foreground="#FFB92C15" Background="Black" BorderBrush="#FF81C32B" />
             <Button Content="X" Width="30" Click="Button_Click" Margin="1,0,0,0" 
-                Background="#FF0C75B4" FontWeight="UltraBold" Foreground="#FFE8DADA"/>
+                FontWeight="UltraBold" Foreground="#FFB92C15" Background="Black" BorderBrush="#FF81C32B"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="2,20,-0.4,2">
             <Label Name="lblKoinex" Content="280000"
-               FontSize="24" Foreground="#FF40E840" FontWeight="ExtraBold"/>
-            <Label Name="lblSep" Content="|" HorizontalAlignment="Left"  FontSize="24" 
-              Foreground="White" FontWeight="ExtraBold"/>
+               FontSize="30" Foreground="White" FontWeight="ExtraBold" />
+            <Label Name="lblSep" Content="|" HorizontalAlignment="Left"  FontSize="30" 
+              Foreground="#FF86640B" FontWeight="ExtraBold"/>
             <Label Name="lblBinance" Content="0.32000" 
-             FontSize="24" Foreground="#FF40E840" FontWeight="ExtraBold"/>
+             FontSize="30" Foreground="White" FontWeight="ExtraBold"/>
         </StackPanel>
         <Expander Margin="2,0,148,0" Width="150" BorderBrush="{x:Null}">
             <StackPanel Orientation="Horizontal" Margin="12,30,0,0"  Height="40"  VerticalAlignment="Top">

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Ticker.exe" version="1.0.0.0" publicKeyToken="addd74023e09b517" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Ticker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Ticker.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="675240">
+      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tmdJuB4UifzY11SyrTnr4NtoE0TjkqP0nckjVkO9vQY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ticker.exe" size="18864">
+      <assemblyIdentity name="Ticker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xRA2/MlOe2oOKEsJZkdTPBVvwj+DcFA2Jv6/rYVbhAw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Ticker.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=ADEEB-PC\USER" issuerKeyHash="56b72855a9fa94bd31f4bbc60593e0284a71ab19" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>428Vq7GFQOhm+dc83N3PGX3cxuSEz/sprJvqmWsUfbE=</DigestValue></Reference></SignedInfo><SignatureValue>kZ48rl2KzaZ6NljWiAuD0vYu/fngzY6jP3CcZ7PMjgXbzFKlW0I5CfbHZpjyJIz8KoGxQNXWZ4teUVbApQW7dTq/NVQABnVfcLuuESpr/QQvj+tQCwRUDFQOwUEOKCUGuJ3hL4VmRKEA6f2ArnubXlXkZZSAt/g0PH6BuMVOTZU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>34U6FbH8BVdjIC8czZJaRV0wnvx/OG7u1wpB575Nnf8/QZ0nZKAOfNxRQZjd4GzEhUWR0ZLsi0fI6leoDJXtnwWNuRsCnreX/oZJqlLVEtU63I29q2llf/pPI3QqTGqzmfkIuvyhkKjhqOAAgd3PsbVwVOIhCDkiiY8OR4A7JX0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="b17d146b99ea9bac29fbcf84e4c6dc7d19cfdddc3cd7f966e84085b1ab156fe3" Description="" Url=""><as:assemblyIdentity name="Ticker.exe" version="1.0.0.0" publicKeyToken="addd74023e09b517" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=ADEEB-PC\USER</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>QP1reRracWVU66qb4EWYH046fqCM2QVw5aU7edMw6J0=</DigestValue></Reference></SignedInfo><SignatureValue>aSres2eg7kgvBUNx8yzoMBXW3khGCo5+emzs5ulvfbyyO0YQ7R7ZRc/X6n+HADdSJm9wjabdOZ2NSsTZ3EFFwY0+GF1pFRyYy3G5kJQG5qo6HsBCrrSuBjH20kxjaKye4sT323jU9ccK2iIWUmnxZc5n21FlAMW1fhP27SxXISQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>34U6FbH8BVdjIC8czZJaRV0wnvx/OG7u1wpB575Nnf8/QZ0nZKAOfNxRQZjd4GzEhUWR0ZLsi0fI6leoDJXtnwWNuRsCnreX/oZJqlLVEtU63I29q2llf/pPI3QqTGqzmfkIuvyhkKjhqOAAgd3PsbVwVOIhCDkiiY8OR4A7JX0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQEwD1nRTdsLlBcqgxIYDiLjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAQQBEAEUARQBCAC0AUABDAFwAVQBTAEUAUjAeFw0xOTAzMTExMjA5MzdaFw0yMDAzMTAxODA5MzdaMCUxIzAhBgNVBAMeGgBBAEQARQBFAEIALQBQAEMAXABVAFMARQBSMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDfhToVsfwFV2MgLxzNklpFXTCe/H84bu7XCkHnvk2d/z9BnSdkoA583FFBmN3gbMSFRZHRkuyLR8jqV6gMle2fBY25GwKet5f+hkmqUtUS1Trcjb2raWV/+k8jdCpMarOZ+Qi6/KGQqOGo4ACB3c+xtXBU4iEIOSKJjw5HgDslfQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAHx7M2r1uYcGYlXHieEPzWaGy0jzCzOuHuWpgZPMtjU8QPZuTIUgMLLl9B/rtrG8buVOfnT1JaEUKvUvzbK58V4JpEdK+o/uefAIX9RJQk7SN0xuL8oEgZyDh5TH40Fpk4/UokL3NTdq1eR66zHs1sVhVaWMZMcoC+Qy69VdDO0D</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

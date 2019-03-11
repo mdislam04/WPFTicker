@@ -118,7 +118,10 @@ namespace Ticker
                 foreach (var item in binancePrice)
                 {
                     if (item.symbol == txtCoin.Text.ToUpper() + "USDT")
-                        price = item.price;// string.Format("{0:N5}", decimal.Parse(item.price));
+                    {
+                        string s = item.price;
+                        price = string.Format("{0:N5}", decimal.Parse(s));
+                    }
                     else if (item.symbol == txtCoin.Text.ToUpper() + "BTC")
                         price = item.price;
                 }
@@ -149,6 +152,20 @@ namespace Ticker
             lblKoinex.FontSize = lblKoinex.FontSize - 4;
             lblBinance.FontSize = lblKoinex.FontSize - 4;
             lblSep.FontSize = lblKoinex.FontSize - 4;
+        }
+
+        public static string DoFormat(double myNumber)
+        {
+            var s = string.Format("{0:0.00}", myNumber);
+
+            if (s.EndsWith("00"))
+            {
+                return ((int)myNumber).ToString();
+            }
+            else
+            {
+                return s;
+            }
         }
     }
 }
