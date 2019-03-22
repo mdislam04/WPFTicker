@@ -51,10 +51,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C5C6AB62D24015B3D28418C222FFA0CD5F55169F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>FD404046F95188EDE22692A9A39A759A91B4BE4C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Ticker_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Ticker_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -125,6 +125,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Ticker_1_TemporaryKey.pfx" />
     <None Include="Ticker_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

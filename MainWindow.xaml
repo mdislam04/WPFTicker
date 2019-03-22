@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ticker"
         mc:Ignorable="d" Topmost="True"
-        Title="MainWindow" Height="100" Width="300" WindowStyle="None" MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True">
+        Title="MainWindow" Height="100" Width="300"  MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
 
     <Grid Margin="0,0,0,0">
-        <Rectangle Height="100" Width="300" RadiusX="9" RadiusY="9" Fill="#FF131414"/>
+        <Rectangle Height="100" Width="300" RadiusX="9" RadiusY="9" Fill="#FF363939"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Margin="170,0,0,70" Height="20" HorizontalAlignment="Right">
-            <Button Width="30" Content="Min" Click="Button_Click_1"  FontWeight="UltraBold"
-           Margin="0,0,0,0" Foreground="#FFB92C15" Background="Black" BorderBrush="#FF81C32B" />
+            <Button Width="30" Content="==" Click="Button_Click_1"  FontWeight="UltraBold"
+           Margin="0,0,0,0" Foreground="White" Background="#FF272222" />
             <Button Content="X" Width="30" Click="Button_Click" Margin="1,0,0,0" 
-                FontWeight="UltraBold" Foreground="#FFB92C15" Background="Black" BorderBrush="#FF81C32B"/>
+                FontWeight="UltraBold" Foreground="White" Background="#FF272222"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="2,20,-0.4,2">

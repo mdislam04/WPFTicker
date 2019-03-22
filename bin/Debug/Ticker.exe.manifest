@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Ticker.exe" version="1.0.0.1" publicKeyToken="addd74023e09b517" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Ticker.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="logo_3Fg_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ticker.exe" size="282544">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ticker.exe" size="284616">
       <assemblyIdentity name="Ticker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bTotJYekV9r4ILTN2HemuGAnajyQRI6ZZlYHVB7/qME=</dsig:DigestValue>
+        <dsig:DigestValue>ewqb5ibjT3vJi0oTV+qmv+Tqi5VAAlD+ji6XC3MeZfA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,4 +84,4 @@
       <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=ADEEB-PC\USER" issuerKeyHash="56b72855a9fa94bd31f4bbc60593e0284a71ab19" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>TPLANRewZu9t0Ng0wO3w0WYh4KK/kLCVKv9hz2uXib4=</DigestValue></Reference></SignedInfo><SignatureValue>1r7/tBjRasC9H2d1rmffX80XTg/eADx91LsQyW2PtqCKKhRfzEOEOuOWJKFDvqrwRVGGsZ0V7Mb8WdS+7QWrRmhSad8BwGK2zZseEZFyPFYginaenYk5hI7m2uM/hOoAYrY6u4u9eOxjZ4cIhVE0gPLQOWYwJt3Vs+mvl09/lO0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>34U6FbH8BVdjIC8czZJaRV0wnvx/OG7u1wpB575Nnf8/QZ0nZKAOfNxRQZjd4GzEhUWR0ZLsi0fI6leoDJXtnwWNuRsCnreX/oZJqlLVEtU63I29q2llf/pPI3QqTGqzmfkIuvyhkKjhqOAAgd3PsbVwVOIhCDkiiY8OR4A7JX0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="be89976bcf61ff2a95b090bfa2e02166d1f0edc034d8d06def66b01735c0f24c" Description="" Url=""><as:assemblyIdentity name="Ticker.exe" version="1.0.0.1" publicKeyToken="addd74023e09b517" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=ADEEB-PC\USER</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>XhCudZvCQ3kKhYnlnm7N8Pfcik/ALubYWIjIw3L8zP8=</DigestValue></Reference></SignedInfo><SignatureValue>fDSaSdyeQY9i3zpyhLEq4yshiqewN6cYymoRmWvCSke3FOFC456uJCYqtMaxrwORZuNl++asp0sZSxrJFb1PoxKpi+20TzqiTO26cKy/3VoffYKmBsv2BIJq23VDZcoe7kld0XgXZAPXxcFOg6p6Qe9g3nW3HQALnyGzseK84Y4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>34U6FbH8BVdjIC8czZJaRV0wnvx/OG7u1wpB575Nnf8/QZ0nZKAOfNxRQZjd4GzEhUWR0ZLsi0fI6leoDJXtnwWNuRsCnreX/oZJqlLVEtU63I29q2llf/pPI3QqTGqzmfkIuvyhkKjhqOAAgd3PsbVwVOIhCDkiiY8OR4A7JX0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQEwD1nRTdsLlBcqgxIYDiLjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAQQBEAEUARQBCAC0AUABDAFwAVQBTAEUAUjAeFw0xOTAzMTExMjA5MzdaFw0yMDAzMTAxODA5MzdaMCUxIzAhBgNVBAMeGgBBAEQARQBFAEIALQBQAEMAXABVAFMARQBSMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDfhToVsfwFV2MgLxzNklpFXTCe/H84bu7XCkHnvk2d/z9BnSdkoA583FFBmN3gbMSFRZHRkuyLR8jqV6gMle2fBY25GwKet5f+hkmqUtUS1Trcjb2raWV/+k8jdCpMarOZ+Qi6/KGQqOGo4ACB3c+xtXBU4iEIOSKJjw5HgDslfQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAHx7M2r1uYcGYlXHieEPzWaGy0jzCzOuHuWpgZPMtjU8QPZuTIUgMLLl9B/rtrG8buVOfnT1JaEUKvUvzbK58V4JpEdK+o/uefAIX9RJQk7SN0xuL8oEgZyDh5TH40Fpk4/UokL3NTdq1eR66zHs1sVhVaWMZMcoC+Qy69VdDO0D</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+</asmv1:assembly>
