@@ -8,7 +8,7 @@
         Title="MainWindow" Height="100" Width="300"  MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
 
     <Grid Margin="0,0,0,0">
-        <Rectangle Height="100" Width="300" RadiusX="9" RadiusY="9" Fill="#FF363939"/>
+        <Rectangle Height="100" Width="300" RadiusX="9" RadiusY="9" Fill="Black" Opacity="0.5"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Margin="170,0,0,70" Height="20" HorizontalAlignment="Right">
             <Button Width="30" Content="==" Click="Button_Click_1"  FontWeight="UltraBold"
@@ -26,7 +26,7 @@
              FontSize="30" Foreground="White" FontWeight="ExtraBold"/>
         </StackPanel>
         <Expander Margin="2,0,148,0" Width="150" BorderBrush="{x:Null}">
-            <StackPanel Orientation="Horizontal" Margin="12,30,0,0"  Height="40"  VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="4,30,-143,0"  Height="40"  VerticalAlignment="Top">
                 <TextBox x:Name="txtCoin" TextWrapping="Wrap" Text="XRP" Width="30"
                  TextChanged="TxtCoin_TextChanged" Margin="0,18,0,4" Background="#FF343131" Foreground="#FFC8D01E">
                     <TextBox.BorderBrush>
@@ -63,6 +63,22 @@
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFF12222" Offset="0"/>
                             <GradientStop Color="#FF281313" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btnGreenFont" Content="" Width="20" Margin="5,18,0,5" Click="BtnGreenFont_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF20F120" Offset="0"/>
+                            <GradientStop Color="#FF40C21D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btnWhiteFont" Content="" Width="20" Margin="5,18,0,5" Click="BtnWhiteFont_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF1FCF1" Offset="0"/>
+                            <GradientStop Color="#FFF4FAF3" Offset="1"/>
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>

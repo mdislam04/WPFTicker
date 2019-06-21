@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Ticker
@@ -23,14 +24,17 @@ namespace Ticker
         {
             InitializeComponent();
 
-            getPrices();
-
-
-
-
-            dispatcherTimer.Tick += DispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
-            dispatcherTimer.Start();
+            try
+            {
+                getPrices();
+                dispatcherTimer.Tick += DispatcherTimer_Tick;
+                dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
+                dispatcherTimer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
            
         }
@@ -62,6 +66,7 @@ namespace Ticker
                 var url = "https://koinex.in/api/ticker";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("User-Agent", "C# App");
+                client.Timeout = TimeSpan.FromSeconds(60);
                 var result = await client.GetStringAsync(url);
                 koinexPrice = JsonConvert.DeserializeObject(result);
                 setPrices();
@@ -75,6 +80,7 @@ namespace Ticker
                 var url = "https://api.binance.com/api/v3/ticker/price";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("User-Agent", "C# App");
+                client.Timeout = TimeSpan.FromSeconds(60);
                 var result = await client.GetStringAsync(url);
                 binancePrice = JsonConvert.DeserializeObject(result);
                 setPrices();
@@ -105,15 +111,16 @@ namespace Ticker
         {
             if (koinexPrice != null && binancePrice != null)
             {
-                lblKoinex.Content = koinexPrice.prices.inr[txtCoin.Text.ToUpper()];
-                lblBinance.Content = fetchBinancePrice();
+                //lblKoinex.Content = koinexPrice.prices.inr[txtCoin.Text.ToUpper()];
+                lblKoinex.Content = fetchBinancePrice();
+                lblBinance.Content = fetchBinancePricebyPara("BTC"); 
             }
         }
 
-        private string fetchBinancePrice()
+        private string fetchBinancePrice(string coin = null)
         {
             string price = string.Empty;
-            if (binancePrice != null)
+                      if (binancePrice != null)
             {
                 foreach (var item in binancePrice)
                 {
@@ -123,6 +130,25 @@ namespace Ticker
                         price = string.Format("{0:N5}", decimal.Parse(s));
                     }
                     else if (item.symbol == txtCoin.Text.ToUpper() + "BTC")
+                        price = item.price;
+                }
+            }
+            return price;
+        }
+
+        private string fetchBinancePricebyPara(string coin)
+        {
+            string price = string.Empty;
+            if (binancePrice != null)
+            {
+                foreach (var item in binancePrice)
+                {
+                    if (item.symbol == coin.ToUpper() + "USDT")
+                    {
+                        string s = item.price;
+                        price = string.Format("{0:N2}", decimal.Parse(s));
+                    }
+                    else if (item.symbol == coin.ToUpper() + "BTC")
                         price = item.price;
                 }
             }
@@ -166,6 +192,17 @@ namespace Ticker
             {
                 return s;
             }
+        }
+
+        private void BtnGreenFont_Click(object sender, RoutedEventArgs e)
+        {
+            lblBinance.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
+            lblKoinex.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
+        }
+        private void BtnWhiteFont_Click(object sender, RoutedEventArgs e)
+        {
+            lblBinance.Foreground = new SolidColorBrush(Colors.White);
+            lblKoinex.Foreground = new SolidColorBrush(Colors.White);
         }
     }
 }

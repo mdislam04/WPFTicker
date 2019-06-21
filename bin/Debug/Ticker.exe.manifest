@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ticker.exe" size="284616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ticker.exe" size="286664">
       <assemblyIdentity name="Ticker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ewqb5ibjT3vJi0oTV+qmv+Tqi5VAAlD+ji6XC3MeZfA=</dsig:DigestValue>
+        <dsig:DigestValue>2jgDv+rEF1/Oj342ZCliyH0zFR3fZfl+I/K10S4MzAM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
