@@ -1,0 +1,101 @@
+﻿<Window x:Name="Ticker" x:Class="Ticker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ticker"
+        mc:Ignorable="d" Topmost="True"
+        Title="MainWindow" Height="100" Width="500"  MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+
+    <Grid Margin="0,0,0,0">
+        <Rectangle Height="100" Width="500" RadiusX="9" RadiusY="9" Fill="Black" Opacity="0.5"/>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Margin="170,0,0,70" Height="20" HorizontalAlignment="Right">
+            <Button Width="30" Content="==" Click="Button_Click_1"  FontWeight="UltraBold"
+           Margin="0,0,0,0" Foreground="White" Background="#FF272222" />
+            <Button Content="X" Width="30" Click="Button_Click" Margin="1,0,0,0" 
+                FontWeight="UltraBold" Foreground="White" Background="#FF272222"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="2,20,-0.4,2">
+            <Label Name="lblKoinex" Content="280000"
+               FontSize="33" Foreground="White" FontWeight="ExtraBold" />
+            <Label Name="lblSep" Content="|" HorizontalAlignment="Left"  FontSize="30" 
+              Foreground="#FF86640B" FontWeight="ExtraBold"/>
+            <Label Name="lblBinance" Content="0.32000" 
+             FontSize="33" Foreground="White" FontWeight="ExtraBold"/>
+            <Label Name="lblSep1" Content="|" HorizontalAlignment="Left"  FontSize="30" 
+              Foreground="#FF86640B" FontWeight="ExtraBold"/>
+            <Label Name="lblEth" Content="280000"
+               FontSize="33" Foreground="White" FontWeight="ExtraBold" />
+        </StackPanel>
+        <Expander Margin="2,0,148,0" Width="150" BorderBrush="{x:Null}">
+            <StackPanel Orientation="Horizontal" Margin="4,30,-143,0"  Height="40"  VerticalAlignment="Top">
+                <TextBox x:Name="txtCoin" TextWrapping="Wrap" Text="XRP" Width="30"
+                 TextChanged="TxtCoin_TextChanged" Margin="0,18,0,4" Background="#FF343131" Foreground="#FFC8D01E">
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFD0D71E" Offset="0.003"/>
+                            <GradientStop Color="#FF7A7D26" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox x:Name="txtTimer" Width="30" Text="6"  TextWrapping="Wrap" Margin="12,17,0,5" TextChanged="TxtTimer_TextChanged" Foreground="#FF29C22B" Background="#FF494949">
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF524D4D" Offset="0.013"/>
+                            <GradientStop Color="#FF41C856" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                    <TextBox.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF342626" Offset="0"/>
+                            <GradientStop Color="#FFD0C4C4" Offset="0.979"/>
+                        </LinearGradientBrush>
+                    </TextBox.OpacityMask>
+                </TextBox>
+                <Button Content="+" Width="25" Margin="5,18,0,5" Foreground="#FFF4F3F3" Click="btnZoomIn_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF12222" Offset="0"/>
+                            <GradientStop Color="#FF281313" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="-" Width="25" Margin="5,18,0,5" Foreground="#FFF4F3F3" Click="btnZoomOut_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF12222" Offset="0"/>
+                            <GradientStop Color="#FF281313" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btnGreenFont" Content="" Width="20" Margin="5,18,0,5" Click="BtnGreenFont_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF20F120" Offset="0"/>
+                            <GradientStop Color="#FF40C21D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btnWhiteFont" Content="" Width="20" Margin="5,18,0,5" Click="BtnWhiteFont_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF1FCF1" Offset="0"/>
+                            <GradientStop Color="#FFF4FAF3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+            </StackPanel>
+        </Expander>
+
+
+
+
+
+
+
+    </Grid>
+
+</Window>
