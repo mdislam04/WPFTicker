@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -19,14 +20,14 @@ namespace Ticker
         dynamic binancePrice;
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         DispatcherTimer dispatcherTimerRefresh = new DispatcherTimer();
-      
+
         public MainWindow()
         {
             InitializeComponent();
 
             try
             {
-                getPrices();
+                GetBinancePrice();
                 dispatcherTimer.Tick += DispatcherTimer_Tick;
                 dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
                 dispatcherTimer.Start();
@@ -36,27 +37,27 @@ namespace Ticker
                 MessageBox.Show(ex.Message);
             }
 
-           
+
         }
 
         private void getPrices()
         {
             try
             {
-                GetKoinexPrice();
+                //GetKoinexPrice();
                 GetBinancePrice();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                lblBinance.Content = ex.Message;
+                // lblBinance.Content = ex.Message;
             }
         }
 
-        
+
 
         private void DispatcherTimer_Tick(object sender, System.EventArgs e)
         {
-            getPrices();
+            GetBinancePrice();
         }
 
         private async void GetKoinexPrice()
@@ -109,27 +110,55 @@ namespace Ticker
 
         void setPrices()
         {
-            if (koinexPrice != null && binancePrice != null)
+            if (binancePrice != null)
             {
-                //lblKoinex.Content = koinexPrice.prices.inr[txtCoin.Text.ToUpper()];
-                lblKoinex.Content = fetchBinancePrice();
-                lblBinance.Content = fetchBinancePricebyPara("BTC"); 
+
+
+                var coins = txtCoin.Text.Split(',');
+                if (coins.Length > 0)
+                {
+                    stack.Children.Clear();
+                    foreach (var item in coins)
+                    {
+                        Label lbl = new Label();
+                        lbl.Name = item;
+                        lbl.FontSize = 33;
+                        lbl.FontWeight = FontWeights.ExtraBold;
+                        lbl.Foreground = new SolidColorBrush(Colors.White);
+                        lbl.Content = fetchBinancePricebyPara(item.ToUpper());
+                        stack.Children.Add(lbl);
+
+                        Label lblSep = new Label();
+                        lblSep.Name = "sep";
+                        lblSep.FontSize = 33;
+                        lblSep.FontWeight = FontWeights.ExtraBold;
+
+
+                        var bc = new BrushConverter();
+
+                        lblSep.Foreground = (Brush)bc.ConvertFrom("#FF86640B");
+
+                        lblSep.Content = "|";
+                        stack.Children.Add(lblSep);
+                    }
+                    stack.Children.RemoveAt(stack.Children.Count - 1);
+                }
             }
         }
 
         private string fetchBinancePrice(string coin = null)
         {
             string price = string.Empty;
-                      if (binancePrice != null)
+            if (binancePrice != null)
             {
                 foreach (var item in binancePrice)
                 {
-                    if (item.symbol == txtCoin.Text.ToUpper() + "USDT")
+                    if (item.symbol == coin.ToUpper() + "USDT")
                     {
                         string s = item.price;
                         price = string.Format("{0:N5}", decimal.Parse(s));
                     }
-                    else if (item.symbol == txtCoin.Text.ToUpper() + "BTC")
+                    else if (item.symbol == coin.ToUpper() + "BTC")
                         price = item.price;
                 }
             }
@@ -146,7 +175,10 @@ namespace Ticker
                     if (item.symbol == coin.ToUpper() + "USDT")
                     {
                         string s = item.price;
-                        price = string.Format("{0:N2}", decimal.Parse(s));
+                        if (decimal.Parse(s) > 1)
+                            price = string.Format("{0:N2}", decimal.Parse(s));
+                        else
+                            price = string.Format("{0:N5}", decimal.Parse(s));
                     }
                     else if (item.symbol == coin.ToUpper() + "BTC")
                         price = item.price;
@@ -157,52 +189,64 @@ namespace Ticker
 
         private void TxtTimer_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            int sec = 10;
+            int sec = 6;
             if (txtTimer.Text != null && int.TryParse(txtTimer.Text, out sec))
-            {              
+            {
                 dispatcherTimer.Stop();
                 dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
                 dispatcherTimer.Start();
             }
         }
 
+
+
         private void btnZoomIn_Click(object sender, RoutedEventArgs e)
         {
-            lblKoinex.FontSize = lblKoinex.FontSize + 4;
-            lblBinance.FontSize = lblKoinex.FontSize + 4;
-            lblSep.FontSize = lblKoinex.FontSize + 4;
+            foreach (var item in stack.Children)
+            {
+                var lbl = item as Label;
+                lbl.FontSize = lbl.FontSize + 4;
+            }
+
         }
 
         private void btnZoomOut_Click(object sender, RoutedEventArgs e)
         {
-            lblKoinex.FontSize = lblKoinex.FontSize - 4;
-            lblBinance.FontSize = lblKoinex.FontSize - 4;
-            lblSep.FontSize = lblKoinex.FontSize - 4;
+            foreach (var item in stack.Children)
+            {
+                var lbl = item as Label;
+                lbl.FontSize = lbl.FontSize - 4;
+            }
+
         }
 
-        public static string DoFormat(double myNumber)
-        {
-            var s = string.Format("{0:0.00}", myNumber);
 
-            if (s.EndsWith("00"))
-            {
-                return ((int)myNumber).ToString();
-            }
-            else
-            {
-                return s;
-            }
-        }
 
         private void BtnGreenFont_Click(object sender, RoutedEventArgs e)
         {
-            lblBinance.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
-            lblKoinex.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
+            foreach (var item in stack.Children)
+            {
+                var lbl = item as Label;
+                if (lbl.Name != "sep")
+                    lbl.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
+            }
+            
         }
         private void BtnWhiteFont_Click(object sender, RoutedEventArgs e)
         {
-            lblBinance.Foreground = new SolidColorBrush(Colors.White);
-            lblKoinex.Foreground = new SolidColorBrush(Colors.White);
+            foreach (var item in stack.Children)
+            {
+                var lbl = item as Label;
+                if (lbl.Name != "sep")
+                    lbl.Foreground = new SolidColorBrush(Colors.White);
+            }
+         
+        }
+
+        private void TxtWidth_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.Width = Convert.ToDouble(txtWidth.Text);
+            this.rect.Width = Convert.ToDouble(txtWidth.Text);
         }
     }
 }
