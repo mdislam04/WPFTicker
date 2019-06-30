@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -20,6 +20,7 @@ namespace Ticker
         dynamic binancePrice;
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         DispatcherTimer dispatcherTimerRefresh = new DispatcherTimer();
+ 
 
         public MainWindow()
         {
@@ -105,6 +106,7 @@ namespace Ticker
 
         private void TxtCoin_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+            stack.Children.Clear();
             setPrices();
         }
 
@@ -112,36 +114,58 @@ namespace Ticker
         {
             if (binancePrice != null)
             {
-
-
-                var coins = txtCoin.Text.Split(',');
-                if (coins.Length > 0)
+                if (stack.Children.Count == 0)
                 {
-                    stack.Children.Clear();
-                    foreach (var item in coins)
+                    var coins = txtCoin.Text.Split(',');
+                    if (coins.Length > 0)
                     {
-                        Label lbl = new Label();
-                        lbl.Name = item;
-                        lbl.FontSize = 33;
-                        lbl.FontWeight = FontWeights.ExtraBold;
-                        lbl.Foreground = new SolidColorBrush(Colors.White);
-                        lbl.Content = fetchBinancePricebyPara(item.ToUpper());
-                        stack.Children.Add(lbl);
+                        foreach (var item in coins)
+                        {
+                            
 
-                        Label lblSep = new Label();
-                        lblSep.Name = "sep";
-                        lblSep.FontSize = 33;
-                        lblSep.FontWeight = FontWeights.ExtraBold;
+                            Label lblCoin = new Label();
+                            lblCoin.Name = "coin";
+                            lblCoin.FontSize = 8;
+                            lblCoin.Content = item.ToUpper();
+                            var bc1 = new BrushConverter();
+
+                            lblCoin.Foreground = (Brush)bc1.ConvertFrom("#A0DB83");
+                            stack.Children.Add(lblCoin);
+
+                            Label lbl = new Label();
+                            lbl.Name = item.ToUpper();
+                            lbl.FontSize = 33;
+                            lbl.FontWeight = FontWeights.ExtraBold;
+                            lbl.Foreground = new SolidColorBrush(Colors.White);
+                            lbl.Content = fetchBinancePricebyPara(item.ToUpper());
+                            stack.Children.Add(lbl);
+
+                            Label lblSep = new Label();
+                            lblSep.Name = "sep";
+                            lblSep.FontSize = 33;
+                            lblSep.FontWeight = FontWeights.ExtraBold;
 
 
-                        var bc = new BrushConverter();
+                            var bc = new BrushConverter();
 
-                        lblSep.Foreground = (Brush)bc.ConvertFrom("#FF86640B");
+                            lblSep.Foreground = (Brush)bc.ConvertFrom("#FF86640B");
 
-                        lblSep.Content = "|";
-                        stack.Children.Add(lblSep);
+                            lblSep.Content = "|";
+                            //stack.Children.Add(lblSep);
+                        }
+                        //stack.Children.RemoveAt(stack.Children.Count - 1);
                     }
-                    stack.Children.RemoveAt(stack.Children.Count - 1);
+                }
+                else
+                {
+                    foreach (var item in stack.Children)
+                    {
+                        var lbl = item as Label;
+                        if(lbl.Name != "sep" && lbl.Name != "coin")
+                        {
+                            lbl.Content = fetchBinancePricebyPara(lbl.Name);
+                        }
+                    }
                 }
             }
         }
@@ -215,6 +239,7 @@ namespace Ticker
             foreach (var item in stack.Children)
             {
                 var lbl = item as Label;
+                if(lbl.FontSize > 5)
                 lbl.FontSize = lbl.FontSize - 4;
             }
 
@@ -230,7 +255,7 @@ namespace Ticker
                 if (lbl.Name != "sep")
                     lbl.Foreground = new SolidColorBrush(Color.FromRgb(113, 232, 35));
             }
-            
+
         }
         private void BtnWhiteFont_Click(object sender, RoutedEventArgs e)
         {
@@ -240,13 +265,9 @@ namespace Ticker
                 if (lbl.Name != "sep")
                     lbl.Foreground = new SolidColorBrush(Colors.White);
             }
-         
+
         }
 
-        private void TxtWidth_LostFocus(object sender, RoutedEventArgs e)
-        {
-            this.Width = Convert.ToDouble(txtWidth.Text);
-            this.rect.Width = Convert.ToDouble(txtWidth.Text);
-        }
+       
     }
 }
