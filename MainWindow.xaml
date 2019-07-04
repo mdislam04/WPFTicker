@@ -10,7 +10,7 @@
     <Grid Margin="0,0,0,0">
         <Rectangle x:Name="rect" RadiusX="9" RadiusY="9" Fill="Black" Opacity="0.5"/>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="20" HorizontalAlignment="Right" Width="59">
+        <StackPanel x:Name="stackMin" Orientation="Horizontal" VerticalAlignment="Top" Height="20" HorizontalAlignment="Right" Width="59">
             <Button Width="30" Content="==" Click="Button_Click_1"  FontWeight="UltraBold"
            Margin="0,0,0,0" Foreground="White" Background="#FF272222" />
             <Button Content="X" Width="30" Click="Button_Click" Margin="1,0,0,0" 
@@ -20,7 +20,7 @@
         <StackPanel Name="stack" Orientation="Vertical" Margin="2,20,-0.4,2">
 
         </StackPanel>
-        <Expander  BorderBrush="{x:Null}" Margin="0,0,63.6,-4.8">
+        <Expander x:Name="expander"  BorderBrush="{x:Null}" Margin="0,0,63.6,-4.8">
             <StackPanel Orientation="Vertical"   HorizontalAlignment="Left">
                 <TextBox x:Name="txtCoin" TextWrapping="Wrap" Text="XRP,BTC,ETH,OMG" 
                  TextChanged="TxtCoin_TextChanged"  Background="#FF343131" Foreground="#FFC8D01E">
