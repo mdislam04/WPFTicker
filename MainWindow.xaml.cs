@@ -134,6 +134,7 @@ namespace Ticker
 
                             Label lbl = new Label();
                             lbl.Name = item.ToUpper();
+                            lbl.MouseLeftButtonDown += Lbl_MouseLeftButtonDown;
                             lbl.FontSize = 33;
                             lbl.FontWeight = FontWeights.ExtraBold;
                             lbl.Foreground = new SolidColorBrush(Colors.White);
@@ -167,6 +168,22 @@ namespace Ticker
                         }
                     }
                 }
+            }
+        }
+
+      
+
+        private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (stackMin.Visibility == Visibility.Visible)
+            {
+                stackMin.Visibility = Visibility.Collapsed;
+                expander.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                stackMin.Visibility = Visibility.Visible;
+                expander.Visibility = Visibility.Visible;
             }
         }
 
