@@ -122,7 +122,6 @@ namespace Ticker
                         foreach (var item in coins)
                         {
 
-
                             Label lblCoin = new Label();
                             string percent = fetchpercentChange(item.ToUpper());
                             lblCoin.Name = "coin";
@@ -169,6 +168,18 @@ namespace Ticker
                         if (lbl.Name != "sep" && lbl.Name != "coin")
                         {
                             lbl.Content = fetchBinancePricebyPara(lbl.Name);
+                        }
+                        else if (lbl.Name == "coin")
+                        {
+                            string coin = lbl.Content.ToString().Split(':')[0];
+                            string percent = fetchpercentChange(coin);
+                            var bc1 = new BrushConverter();
+                            if (percent != null && percent.IndexOf('-') > -1)
+                                lbl.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
+                            else
+                                lbl.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
+                            lbl.Content = coin + " : " + percent;
+
                         }
                     }
                 }
@@ -239,7 +250,7 @@ namespace Ticker
             {
                 foreach (var item in priceStats)
                 {
-                    if (item.symbol == coin.ToUpper() + "USDT")
+                    if (item.symbol == coin.Trim().ToUpper() + "USDT")
                     {
                         string s = item.priceChangePercent;
                         percent = string.Format("{0:N2}", decimal.Parse(s));
