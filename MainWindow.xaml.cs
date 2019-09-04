@@ -130,7 +130,10 @@ namespace Ticker
                             if (percent != null && percent.IndexOf('-') > -1)
                                 lblCoin.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
                             else
+                            {
                                 lblCoin.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
+                                percent = "+" + percent;
+                            }
                             lblCoin.Content = item.ToUpper() + " : " + percent;
 
                             stack.Children.Add(lblCoin);
@@ -171,13 +174,16 @@ namespace Ticker
                         }
                         else if (lbl.Name == "coin")
                         {
-                            string coin = lbl.Content.ToString().Split(':')[0];
+                            string coin = lbl.Content.ToString().Split(':')[0].Trim();
                             string percent = fetchpercentChange(coin);
                             var bc1 = new BrushConverter();
                             if (percent != null && percent.IndexOf('-') > -1)
                                 lbl.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
                             else
+                            {
                                 lbl.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
+                                percent = "+" + percent;
+                            }
                             lbl.Content = coin + " : " + percent;
 
                         }
@@ -250,7 +256,7 @@ namespace Ticker
             {
                 foreach (var item in priceStats)
                 {
-                    if (item.symbol == coin.Trim().ToUpper() + "USDT")
+                    if (item.symbol == coin.ToUpper() + "USDT")
                     {
                         string s = item.priceChangePercent;
                         percent = string.Format("{0:N2}", decimal.Parse(s));
