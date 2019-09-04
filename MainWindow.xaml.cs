@@ -16,11 +16,11 @@ namespace Ticker
     /// </summary>
     public partial class MainWindow : Window
     {
-        dynamic koinexPrice;
+        dynamic priceStats;
         dynamic binancePrice;
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         DispatcherTimer dispatcherTimerRefresh = new DispatcherTimer();
- 
+
 
         public MainWindow()
         {
@@ -61,16 +61,16 @@ namespace Ticker
             GetBinancePrice();
         }
 
-        private async void GetKoinexPrice()
+        private async void GetPriceStats()
         {
             using (var client = new HttpClient())
             {
-                var url = "https://koinex.in/api/ticker";
+                var url = "https://api.binance.com/api/v1/ticker/24hr";
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("User-Agent", "C# App");
                 client.Timeout = TimeSpan.FromSeconds(60);
                 var result = await client.GetStringAsync(url);
-                koinexPrice = JsonConvert.DeserializeObject(result);
+                priceStats = JsonConvert.DeserializeObject(result);
                 setPrices();
             }
         }
@@ -85,7 +85,7 @@ namespace Ticker
                 client.Timeout = TimeSpan.FromSeconds(60);
                 var result = await client.GetStringAsync(url);
                 binancePrice = JsonConvert.DeserializeObject(result);
-                setPrices();
+                GetPriceStats();
             }
         }
 
@@ -121,19 +121,24 @@ namespace Ticker
                     {
                         foreach (var item in coins)
                         {
-                            
+
 
                             Label lblCoin = new Label();
+                            string percent = fetchpercentChange(item.ToUpper());
                             lblCoin.Name = "coin";
-                            lblCoin.FontSize = 8;
-                            lblCoin.Content = item.ToUpper();
+                            lblCoin.FontSize = 12;
                             var bc1 = new BrushConverter();
+                            if (percent != null && percent.IndexOf('-') > -1)
+                                lblCoin.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
+                            else
+                                lblCoin.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
+                            lblCoin.Content = item.ToUpper() + " : " + percent;
 
-                            lblCoin.Foreground = (Brush)bc1.ConvertFrom("#A0DB83");
                             stack.Children.Add(lblCoin);
 
                             Label lbl = new Label();
                             lbl.Name = item.ToUpper();
+                            lbl.MouseLeftButtonDown += Lbl_MouseLeftButtonDown;
                             lbl.FontSize = 33;
                             lbl.FontWeight = FontWeights.ExtraBold;
                             lbl.Foreground = new SolidColorBrush(Colors.White);
@@ -161,12 +166,28 @@ namespace Ticker
                     foreach (var item in stack.Children)
                     {
                         var lbl = item as Label;
-                        if(lbl.Name != "sep" && lbl.Name != "coin")
+                        if (lbl.Name != "sep" && lbl.Name != "coin")
                         {
                             lbl.Content = fetchBinancePricebyPara(lbl.Name);
                         }
                     }
                 }
+            }
+        }
+
+
+
+        private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (stackMin.Visibility == Visibility.Visible)
+            {
+                stackMin.Visibility = Visibility.Collapsed;
+                expander.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                stackMin.Visibility = Visibility.Visible;
+                expander.Visibility = Visibility.Visible;
             }
         }
 
@@ -211,6 +232,26 @@ namespace Ticker
             return price;
         }
 
+        private string fetchpercentChange(string coin)
+        {
+            string percent = string.Empty;
+            if (priceStats != null)
+            {
+                foreach (var item in priceStats)
+                {
+                    if (item.symbol == coin.ToUpper() + "USDT")
+                    {
+                        string s = item.priceChangePercent;
+                        percent = string.Format("{0:N2}", decimal.Parse(s));
+
+                    }
+                    else if (item.symbol == coin.ToUpper() + "BTC")
+                        percent = item.priceChangePercent;
+                }
+            }
+            return percent;
+        }
+
         private void TxtTimer_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             int sec = 6;
@@ -239,8 +280,8 @@ namespace Ticker
             foreach (var item in stack.Children)
             {
                 var lbl = item as Label;
-                if(lbl.FontSize > 5)
-                lbl.FontSize = lbl.FontSize - 4;
+                if (lbl.FontSize > 5)
+                    lbl.FontSize = lbl.FontSize - 4;
             }
 
         }
@@ -268,6 +309,6 @@ namespace Ticker
 
         }
 
-       
+
     }
 }
