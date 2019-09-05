@@ -237,7 +237,9 @@ namespace Ticker
                     if (item.symbol == coin.ToUpper() + "USDT")
                     {
                         string s = item.price;
-                        if (decimal.Parse(s) > 1)
+                        if (coin.ToUpper() == "BTC")
+                            price = string.Format("{0:N0}", decimal.Parse(s));
+                        else if (decimal.Parse(s) > 1)
                             price = string.Format("{0:N2}", decimal.Parse(s));
                         else
                             price = string.Format("{0:N5}", decimal.Parse(s));
