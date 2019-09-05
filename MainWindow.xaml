@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ticker"
         mc:Ignorable="d" Topmost="True"
-        Title="MainWindow" SizeToContent="WidthAndHeight"  MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+        Title="MainWindow" SizeToContent="WidthAndHeight"  MouseDown="MouseDown_Handler" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" Background="#4A3A3A" WindowStyle="None">
 
     <Grid Margin="0,0,0,0">
         <Rectangle x:Name="rect" RadiusX="9" RadiusY="9" Fill="Black" Opacity="0.5"/>
@@ -31,7 +31,7 @@
                         </LinearGradientBrush>
                     </TextBox.BorderBrush>
                 </TextBox>
-                <TextBox x:Name="txtTimer" Width="30" Text="6"  TextWrapping="Wrap" Margin="12,17,0,5" TextChanged="TxtTimer_TextChanged" Foreground="#FF29C22B" Background="#FF494949">
+                <TextBox x:Name="txtTimer" Width="30" Text="10"  TextWrapping="Wrap" Margin="12,17,0,5" TextChanged="TxtTimer_TextChanged" Foreground="#FF29C22B" Background="#FF494949">
                     <TextBox.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF524D4D" Offset="0.013"/>

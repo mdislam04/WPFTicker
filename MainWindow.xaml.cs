@@ -128,7 +128,7 @@ namespace Ticker
                             lblCoin.FontSize = 12;
                             var bc1 = new BrushConverter();
                             if (percent != null && percent.IndexOf('-') > -1)
-                                lblCoin.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
+                                lblCoin.Foreground = (Brush)bc1.ConvertFrom("#FC0E0E");
                             else
                             {
                                 lblCoin.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
@@ -178,7 +178,7 @@ namespace Ticker
                             string percent = fetchpercentChange(coin);
                             var bc1 = new BrushConverter();
                             if (percent != null && percent.IndexOf('-') > -1)
-                                lbl.Foreground = (Brush)bc1.ConvertFrom("#8B0000");
+                                lbl.Foreground = (Brush)bc1.ConvertFrom("#FC0E0E");
                             else
                             {
                                 lbl.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
