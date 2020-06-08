@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -21,6 +22,24 @@ namespace Ticker
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         DispatcherTimer dispatcherTimerRefresh = new DispatcherTimer();
 
+        public void LoadJson()
+        {
+            using (StreamReader r = new StreamReader("coin.json"))
+            {
+                string json = r.ReadToEnd();
+                string coins = string.Empty;
+                dynamic items = JsonConvert.DeserializeObject(json);
+                foreach (var item in items.Coin)
+                {
+                    if (coins.Length > 0)
+                        coins = coins + ',' + item;
+                    else
+                        coins = item;
+                }
+
+                txtCoin.Text = coins;
+            }
+        }
 
         public MainWindow()
         {
@@ -28,6 +47,7 @@ namespace Ticker
 
             try
             {
+                LoadJson();
                 GetBinancePrice();
                 dispatcherTimer.Tick += DispatcherTimer_Tick;
                 dispatcherTimer.Interval = new TimeSpan(0, 0, int.Parse(txtTimer.Text));
@@ -132,7 +152,8 @@ namespace Ticker
                             else
                             {
                                 lblCoin.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
-                                percent = "+" + percent;
+                                if (!chkHL.IsChecked.Value)
+                                    percent = "+" + percent;
                             }
                             lblCoin.Content = item.ToUpper() + " : " + percent;
 
@@ -182,7 +203,8 @@ namespace Ticker
                             else
                             {
                                 lbl.Foreground = (Brush)bc1.ConvertFrom("#32CD32");
-                                percent = "+" + percent;
+                                if (!chkHL.IsChecked.Value)
+                                    percent = "+" + percent;
                             }
                             lbl.Content = coin + " : " + percent;
 
@@ -260,15 +282,57 @@ namespace Ticker
                 {
                     if (item.symbol == coin.ToUpper() + "USDT")
                     {
-                        string s = item.priceChangePercent;
-                        percent = string.Format("{0:N2}", decimal.Parse(s));
+                        if (!chkHL.IsChecked.Value)
+                        {
+                            string s = item.priceChangePercent;
+                            percent = string.Format("{0:N2}", decimal.Parse(s));
+                        }
+                        else
+                        {
+                            string h = item.highPrice.Value;
+                            string l = item.lowPrice.Value;
+                            percent = roundOff(coin, l) + " | " +
+                               roundOff(coin, h);
+                        }
 
                     }
                     else if (item.symbol == coin.ToUpper() + "BTC")
-                        percent = item.priceChangePercent;
+                    {
+                        if (!chkHL.IsChecked.Value)
+                            percent = item.priceChangePercent;
+                        else
+                        {
+                            string h = item.highPrice.Value;
+                            string l = item.lowPrice.Value;
+                            percent = roundOff(coin, l) + " | " +
+                               roundOff(coin, h);
+                        }
+                    }
                 }
             }
             return percent;
+        }
+
+        private string roundOff(string coin, string value)
+        {
+            string roundOffValue = string.Empty;
+            switch (coin)
+            {
+                case "XRP":
+                case "ZRX":
+                    roundOffValue = string.Format("{0:N5}", decimal.Parse(value));
+                    break;
+                case "OMG":
+                case "ETH":
+                    roundOffValue = string.Format("{0:N2}", decimal.Parse(value));
+                    break;
+                case "BTC":
+                    roundOffValue = string.Format("{0:N2}", decimal.Parse(value));
+                    break;
+                default:
+                    break;
+            }
+            return roundOffValue;
         }
 
         private void TxtTimer_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

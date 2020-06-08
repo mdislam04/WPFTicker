@@ -22,7 +22,7 @@
         </StackPanel>
         <Expander x:Name="expander"  BorderBrush="{x:Null}" Margin="0,0,63.6,-4.8">
             <StackPanel Orientation="Vertical"   HorizontalAlignment="Left">
-                <TextBox x:Name="txtCoin" TextWrapping="Wrap" Text="XRP,BTC,ETH,OMG" 
+                <TextBox x:Name="txtCoin" TextWrapping="Wrap" Text="XRP,BTC,ETH,OMG,ZRX" 
                  TextChanged="TxtCoin_TextChanged"  Background="#FF343131" Foreground="#FFC8D01E">
                     <TextBox.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -77,6 +77,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
+                <CheckBox x:Name="chkHL" Margin="5,18,0,5" Height="15" Width="40" Content="H/L" RenderTransformOrigin="0.5,0.5" Foreground="#FFBC2525">
+                   
+                </CheckBox>
 
 
 
